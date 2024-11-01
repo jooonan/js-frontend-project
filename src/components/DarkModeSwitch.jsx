@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
 const DarkModeSwitch = () => {
 
@@ -16,6 +16,18 @@ const DarkModeSwitch = () => {
         localStorage.setItem('theme', 'light');
     }
   };
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme')
+
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      setIsDarkMode(true);
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        setIsDarkMode(false);
+    }
+  }, [])
 
   return (
     <div className="btn-toggle-switch">
