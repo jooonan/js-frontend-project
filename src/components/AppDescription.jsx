@@ -1,8 +1,6 @@
 import React from 'react'
 import AppChart from '../assets/images/app-chart.svg'
 import AppContacts from '../assets/images/app-contacts.svg'
-import CardIcon from '../assets/images/easy-payments.svg'
-import WalletIcon from '../assets/images/cashback.svg'
 
 const AppDescription = () => {
   return (
@@ -49,12 +47,12 @@ const AppDescription = () => {
               <h2>Receive payment from international bank details</h2>
               <div className="description-box">
                   <div className="description-text-box">
-                      <img src={CardIcon} alt="Card icon" />
+                      <img src="./icons/easy-payments.svg" alt="Card icon" />
                       <p>Manage your payments online. Mollis congue egestas egestas fermentum fames.</p>
                   </div>
 
                   <div className="description-text-box">
-                      <img src={WalletIcon} alt="Wallet icon" />
+                      <img src="./icons/cashback.svg" alt="Wallet icon" />
                       <p>A elementur and imperdiet enim, pretium etiam facilisi aenean quam mauris.</p>
                   </div>
               </div>
