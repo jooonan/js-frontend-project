@@ -1,3 +1,4 @@
+import React, { useRef } from 'react';
 import './assets/css/main.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -12,12 +13,15 @@ import SubscribeSection from './components/SubscribeSection'
 
 function App() {
 
+   //HELP FROM CHATGPT WITH REFERENCE WHEN CLICKING 'DISCOVER MORE' TO TRANSITION TO 'BRANDS-SECTION'
+  const brandsRef = useRef(null); // Create a ref for the Brands section
+
   return (
     <div className="wrapper">
       <Header />
       <main>
-        <Hero />
-        <Brands />
+        <Hero brandsRef={brandsRef} />
+        <Brands ref={brandsRef} />
         <AppFeatures />
         <HowItWorks />
         <AppDescription />

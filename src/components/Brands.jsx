@@ -6,9 +6,10 @@ import BrandLogo4 from '../assets/images/ipsum3.svg'
 import BrandLogo5 from '../assets/images/ipsum4.svg'
 import BrandLogo6 from '../assets/images/ipsum5.svg'
 
-const Brands = () => {
+//HELP FROM CHATGPT WITH REFERENCE WHEN CLICKING 'DISCOVER MORE' TO TRANSITION TO 'BRANDS-SECTION'
+const Brands = React.forwardRef((props, ref) => {
   return (
-    <section className="brands">
+    <section ref={ref} className="brands">
       <div className="container">
           <div className="brand-box">
               <img src={BrandLogo1} alt="" />
@@ -31,6 +32,6 @@ const Brands = () => {
       </div>
     </section>
   )
-}
+})
 
 export default Brands
