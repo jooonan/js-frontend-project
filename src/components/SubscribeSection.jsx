@@ -6,6 +6,8 @@ const SubscribeSection = () => {
     // HELP FROM CHATGPT
     const [email, setEmail] = useState('');
     const [submitted, setSubmitted] = useState(false)
+    const [successMessage, setSuccessMessage] = useState(''); 
+    const [errorMessage, setErrorMessage] = useState(''); 
 
     // Step 2: Update email state when typing
     const handleChange = (e) => {
@@ -32,15 +34,17 @@ const SubscribeSection = () => {
       
             if (!response.ok) {
               throw new Error(`Server error: ${response.status}`);
-            }
-      
-            if (response.ok) {
+            } else {
                 setSubmitted(true)
                 setEmail('')
                 console.log('Form submitted successfully');
+                setSuccessMessage('Thank you for subscribing!');
+                setErrorMessage('');
             }
           } catch (error) {
             console.error('Error submitting form:', error);
+            setErrorMessage('Please enter a valid email!');
+            setSuccessMessage('');
           }
         };
   
@@ -53,13 +57,18 @@ const SubscribeSection = () => {
                     <h2>Subscribe to our newsletter to stay informed about latest updates</h2>
                 </div>
 
-                <form className="subs-email" id="subsEmail" onSubmit={handleSubmit} noValidate>  
-                    <label className="form-label" htmlFor="email">
-                        <i className="fa-regular fa-envelope"></i>
-                    </label>
-                    <input className="form-input" type="email" name="email" id="email" onChange={handleChange} value={email} required placeholder="Your Email" />
-                    <button className="btn-primary">Subscribe</button>
-                </form>
+                <div className="form-box">
+                  <form className="subs-email" id="subsEmail" onSubmit={handleSubmit} noValidate>  
+                      <label className="form-label" htmlFor="email">
+                          <i className="fa-regular fa-envelope"></i>
+                      </label>
+                      <input className="form-input" type="email" name="email" id="email" onChange={handleChange} value={email} required placeholder="Your Email" />
+                      <button className="btn-primary">Subscribe</button>
+                  </form>
+
+                    {successMessage && <p className="success-message">{successMessage}</p>}
+                    {errorMessage && <p className="error-message">{errorMessage}</p>}
+                </div>
             </div>
         </section>
     )
